@@ -52,6 +52,11 @@ class HttpRequestHandler:
     Both error messages include: f"HTTP {status_code}: {response.text[:200]}"
     """
 
+    STEP_TYPE = "http"
+    DISPLAY_NAME = "HTTP Request"
+    DESCRIPTION = "Makes an HTTP request to a URL"
+    PARAMS_SCHEMA = {"type": "object", "properties": {"url": {"type": "string"}, "method": {"type": "string", "enum": ["GET", "POST", "PUT", "DELETE", "PATCH"]}, "body": {"type": "object"}}, "required": ["url"]}
+
     def run(self, step: object, context: dict) -> str:
         """Execute an http.request step using httpx.
 
@@ -127,6 +132,7 @@ class HttpIntegration:
     """
 
     AGENT_TYPE_MAP: dict[str, str] = {"http": "common-agent"}
+    STEP_HANDLERS: list = [HttpRequestHandler]
 
     @hookimpl
     def register_handlers(self, pm: pluggy.PluginManager) -> None:

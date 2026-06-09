@@ -62,6 +62,11 @@ class AISummarizeHandler:
     CLI usage outside container context.
     """
 
+    STEP_TYPE = "ai"
+    DISPLAY_NAME = "AI Step"
+    DESCRIPTION = "Runs a Claude/AI model call on provided input"
+    PARAMS_SCHEMA = {"type": "object", "properties": {"model": {"type": "string"}, "prompt": {"type": "string"}}, "required": ["prompt"]}
+
     def run(self, step: object, context: dict) -> str:
         """Execute an ai.summarize step using PydanticAI.
 
@@ -149,6 +154,7 @@ class AiIntegration:
     """
 
     AGENT_TYPE_MAP: dict[str, str] = {"ai": "common-agent"}
+    STEP_HANDLERS: list = [AISummarizeHandler]
 
     @hookimpl
     def register_handlers(self, pm: pluggy.PluginManager) -> None:

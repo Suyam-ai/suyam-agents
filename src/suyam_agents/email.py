@@ -71,6 +71,11 @@ class EmailSMTPHandler:
       - SMTPServerDisconnected, TimeoutError → TransientError (retryable)
     """
 
+    STEP_TYPE = "email_smtp"
+    DISPLAY_NAME = "Email (SMTP)"
+    DESCRIPTION = "Sends an email via SMTP"
+    PARAMS_SCHEMA = {"type": "object", "properties": {"to": {"type": "string"}, "subject": {"type": "string"}, "body": {"type": "string"}}, "required": ["to", "subject", "body"]}
+
     def run(self, step: object, context: dict) -> str:
         """Execute an email.smtp step using smtplib.
 
@@ -174,6 +179,11 @@ class EmailM365Handler:
       - Graph API 4xx response → FatalError (bad request, auth failure, not found)
       - Graph API 5xx response → TransientError (retryable server error)
     """
+
+    STEP_TYPE = "email_m365"
+    DISPLAY_NAME = "Email (M365)"
+    DESCRIPTION = "Sends an email via Microsoft 365 Graph API"
+    PARAMS_SCHEMA = {"type": "object", "properties": {"to": {"type": "string"}, "subject": {"type": "string"}, "body": {"type": "string"}}, "required": ["to", "subject", "body"]}
 
     def run(self, step: object, context: dict) -> str:
         """Execute an email.m365 step using Microsoft Graph API.
@@ -322,6 +332,7 @@ class EmailIntegration:
     """
 
     AGENT_TYPE_MAP: dict[str, str] = {"email": "email-agent"}
+    STEP_HANDLERS: list = [EmailSMTPHandler, EmailM365Handler]
 
     @hookimpl
     def register_handlers(self, pm: pluggy.PluginManager) -> None:

@@ -29,6 +29,11 @@ class TeamsStepHandler:
     (e.g. for validate-step-types), but calling run() directly is an error.
     """
 
+    STEP_TYPE = "teams"
+    DISPLAY_NAME = "Microsoft Teams"
+    DESCRIPTION = "Polls a Microsoft Teams channel for messages"
+    PARAMS_SCHEMA = {"type": "object", "properties": {"channel_id": {"type": "string"}, "limit": {"type": "integer"}}, "required": ["channel_id"]}
+
     def run(self, step: object, context: dict) -> str:
         """Raise FatalError — Teams steps must run in an LXC container.
 
@@ -52,6 +57,7 @@ class TeamsIntegration:
     """
 
     AGENT_TYPE_MAP: dict[str, str] = {"teams": "teams-email-agent"}
+    STEP_HANDLERS: list = [TeamsStepHandler]
 
     @hookimpl
     def register_handlers(self, pm: pluggy.PluginManager) -> None:
