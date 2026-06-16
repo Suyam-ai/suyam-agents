@@ -3,34 +3,29 @@
 let
   py = pkgs.python3;
 
-  # nix-prefetch: run nix build once to get real hash, paste here, rebuild
-  pydantic-graph = py.pkgs.buildPythonPackage rec {
-    pname = "pydantic_graph";
-    version = "0.0.36";
+  # ROOT CAUSE NOTE (CLEANUP-02): The previous expressions baked pydantic_graph (pre-1.x)
+  # and pydantic_ai_slim (pre-1.x) into this flake. This was a major version gap:
+  #   - pyproject.toml requires pydantic-ai[anthropic,groq] >= 1.104.0 (1.x series)
+  #   - The old expressions installed the 0.x series (pre-rename, incompatible API surface)
+  #   - 0.x had no Agent class; 1.x has a completely different module surface
+  #   - Agents failed at runtime with ImportError or AttributeError
+  # Fix: replace both pre-1.x expressions with a single unified pydantic-ai 1.107.0 expression.
+  # The 1.x package is the unified wheel (the -slim variant was a 0.x naming artifact).
+  #
+  # nix-prefetch: hash obtained via sha256sum of pydantic_ai-1.107.0-py3-none-any.whl
+  pydantic-ai = py.pkgs.buildPythonPackage rec {
+    pname = "pydantic_ai";
+    version = "1.107.0";
     format = "wheel";
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/py3/p/pydantic_graph/pydantic_graph-0.0.36-py3-none-any.whl";
-      hash = "sha256-/MLDkWjXlGb9vvb1TjwH8136pFXVgfsZDuzHf6ZbO5I=";
-    };
-    propagatedBuildInputs = with py.pkgs; [ pydantic ];
-    doCheck = false;
-  };
-
-  # nix-prefetch: run nix build once to get real hash, paste here, rebuild
-  pydantic-ai-slim = py.pkgs.buildPythonPackage rec {
-    pname = "pydantic_ai_slim";
-    version = "0.0.36";
-    format = "wheel";
-    src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/py3/p/pydantic_ai_slim/pydantic_ai_slim-0.0.36-py3-none-any.whl";
-      hash = "sha256-8M/mXcR4j1iMImxp5WtkPxLfX5sKBrDV2eEw0eiI3Uk=";
+      url = "https://files.pythonhosted.org/packages/py3/p/pydantic_ai/pydantic_ai-1.107.0-py3-none-any.whl";
+      hash = "sha256-4DGIC0StfOODay9qqM4qC9czzbC4mjStumR+lt3Lp4g=";
     };
     propagatedBuildInputs = with py.pkgs; [
       pydantic
       httpx
       anyio
       typing-extensions
-      pydantic-graph
     ];
     doCheck = false;
   };
@@ -91,8 +86,7 @@ let
     anyio
     typing-extensions
     distro
-    pydantic-graph
-    pydantic-ai-slim
+    pydantic-ai
     groq-sdk
     jiter
     anthropic-sdk

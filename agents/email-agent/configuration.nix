@@ -1,4 +1,9 @@
 { config, pkgs, modulesPath, lib, ... }:
+# CLEANUP-02 note: pydantic-ai is NOT included in this agent flake because the
+# email-agent only runs email_smtp.py and email_m365.py (no AI summarization).
+# The pydantic-ai version fix (0.x → 1.x) was applied to common-agent (which runs
+# ai_summarize.py). If this agent ever needs AI capabilities, add the pydantic-ai
+# 1.107.0 buildPythonPackage expression from common-agent/configuration.nix.
 
 let
   py = pkgs.python3;
