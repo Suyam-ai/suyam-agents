@@ -9,10 +9,80 @@ let
   #   - The old expressions installed the 0.x series (pre-rename, incompatible API surface)
   #   - 0.x had no Agent class; 1.x has a completely different module surface
   #   - Agents failed at runtime with ImportError or AttributeError
-  # Fix: replace both pre-1.x expressions with a single unified pydantic-ai 1.107.0 expression.
-  # The 1.x package is the unified wheel (the -slim variant was a 0.x naming artifact).
+  # Fix: replace both pre-1.x expressions with pydantic-ai 1.107.0.
+  # In 1.x, pydantic_ai is a meta-package wrapping pydantic_ai_slim; both are provided below.
+  # The actual Python module lives in pydantic_ai_slim.
   #
-  # nix-prefetch: hash obtained via sha256sum of pydantic_ai-1.107.0-py3-none-any.whl
+  # nix-prefetch: hashes obtained via sha256sum of each wheel downloaded from PyPI
+
+  pydantic-graph = py.pkgs.buildPythonPackage rec {
+    pname = "pydantic_graph";
+    version = "1.107.0";
+    format = "wheel";
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/py3/p/pydantic_graph/pydantic_graph-1.107.0-py3-none-any.whl";
+      hash = "sha256-ca3ZT+fhTHA5d6iVEXxHWq5sCwKndKA2xNANmmPHiwA=";
+    };
+    propagatedBuildInputs = with py.pkgs; [ pydantic typing-extensions ];
+    doCheck = false;
+  };
+
+  genai-prices = py.pkgs.buildPythonPackage rec {
+    pname = "genai_prices";
+    version = "0.0.62";
+    format = "wheel";
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/py3/g/genai_prices/genai_prices-0.0.62-py3-none-any.whl";
+      hash = "sha256-XZqw2eXYHgNfiL9ZH7ao3eUnkieGrPHuJzc1j3u+AWc=";
+    };
+    doCheck = false;
+  };
+
+  griffelib = py.pkgs.buildPythonPackage rec {
+    pname = "griffelib";
+    version = "2.0.0";
+    format = "wheel";
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/py3/g/griffelib/griffelib-2.0.0-py3-none-any.whl";
+      hash = "sha256-AShIeMlmUIttbx2/+bb6YHvAYtgmHFxyU8soWwZCKn8=";
+    };
+    doCheck = false;
+  };
+
+  typing-inspection = py.pkgs.buildPythonPackage rec {
+    pname = "typing_inspection";
+    version = "0.4.0";
+    format = "wheel";
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/py3/t/typing_inspection/typing_inspection-0.4.0-py3-none-any.whl";
+      hash = "sha256-UOclWfzSpjZ6Gfen5hDmr8ufrJQMZQKQ7tiT1hOGgy8=";
+    };
+    propagatedBuildInputs = with py.pkgs; [ typing-extensions ];
+    doCheck = false;
+  };
+
+  pydantic-ai-slim = py.pkgs.buildPythonPackage rec {
+    pname = "pydantic_ai_slim";
+    version = "1.107.0";
+    format = "wheel";
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/py3/p/pydantic_ai_slim/pydantic_ai_slim-1.107.0-py3-none-any.whl";
+      hash = "sha256-GvSbuuBqbFmPcsVNRzS6N3EAysSTyaBfqOCJvr6uDaY=";
+    };
+    propagatedBuildInputs = with py.pkgs; [
+      pydantic
+      httpx
+      opentelemetry-api
+      pydantic-graph
+      genai-prices
+      griffelib
+      typing-inspection
+    ];
+    doCheck = false;
+  };
+
+  # pydantic-ai 1.107.0 is a meta-package; the actual module comes from pydantic-ai-slim above.
+  # Install pydantic-ai-slim in the Python environment (the module name is still pydantic_ai).
   pydantic-ai = py.pkgs.buildPythonPackage rec {
     pname = "pydantic_ai";
     version = "1.107.0";
@@ -21,12 +91,7 @@ let
       url = "https://files.pythonhosted.org/packages/py3/p/pydantic_ai/pydantic_ai-1.107.0-py3-none-any.whl";
       hash = "sha256-4DGIC0StfOODay9qqM4qC9czzbC4mjStumR+lt3Lp4g=";
     };
-    propagatedBuildInputs = with py.pkgs; [
-      pydantic
-      httpx
-      anyio
-      typing-extensions
-    ];
+    propagatedBuildInputs = [ pydantic-ai-slim ];
     doCheck = false;
   };
 
@@ -86,6 +151,7 @@ let
     anyio
     typing-extensions
     distro
+    pydantic-ai-slim
     pydantic-ai
     groq-sdk
     jiter
