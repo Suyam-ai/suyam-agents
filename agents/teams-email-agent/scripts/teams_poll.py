@@ -84,7 +84,17 @@ async def poll_latest_message(
     body = latest.body
     if body is None:
         return ""
-    return body.content or ""
+    # IN-04 fix: Teams messages with HTML body type contain raw HTML tags
+    # (<p>, <div>, <at data-id=...>, etc.) which degrade AI summarisation quality.
+    # Strip tags and decode HTML entities when content_type indicates HTML.
+    import html as _html  # noqa: PLC0415
+    import re as _re  # noqa: PLC0415
+    content = body.content or ""
+    if content and getattr(body, "content_type", None) is not None and "html" in str(body.content_type).lower():
+        content = _re.sub(r"<[^>]+>", " ", content)
+        content = _html.unescape(content)
+        content = " ".join(content.split())  # normalize whitespace
+    return content
 
 
 def main() -> None:
