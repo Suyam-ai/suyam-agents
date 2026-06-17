@@ -143,7 +143,6 @@ let
     anyio
     typing-extensions
     distro
-    pydantic-ai-slim
     pydantic-ai
     groq-sdk
     jiter
