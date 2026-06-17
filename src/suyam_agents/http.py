@@ -92,6 +92,16 @@ class HttpRequestHandler:
         if not url:
             raise FatalError("http.request: 'url' is required in step config")
 
+        # Validate URL scheme — only http/https are permitted. file://, ftp://, etc.
+        # would either fail opaquely in httpx or expose the local filesystem.
+        from urllib.parse import urlparse  # noqa: PLC0415
+        _parsed = urlparse(url)
+        if _parsed.scheme not in ("http", "https"):
+            raise FatalError(
+                f"http.request: unsupported URL scheme {_parsed.scheme!r} — "
+                "only http/https are allowed"
+            )
+
         headers: dict = step.config.get("headers", {})  # type: ignore[attr-defined]
         body = step.config.get("body", None)  # type: ignore[attr-defined]
         timeout: int = int(step.config.get("timeout", 30))  # type: ignore[attr-defined]
