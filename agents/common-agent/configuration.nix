@@ -145,7 +145,6 @@ let
     typing-extensions
     distro
     pydantic-ai-slim
-    pydantic-ai
     groq-sdk
     jiter
     anthropic-sdk
