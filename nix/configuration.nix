@@ -34,7 +34,7 @@ let
     version = "49.0.0";
     format = "wheel";
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/cp311/c/cryptography/cryptography-49.0.0-cp311-abi3-manylinux_2_28_x86_64.whl";
+      url = "https://files.pythonhosted.org/packages/20/2c/0622f20ff02b2ef32558733443805dc82fd4c275be01b2d19d14676f3a1b/cryptography-49.0.0-cp311-abi3-manylinux_2_28_x86_64.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
       hash = "sha256-Kv6QUdp6571ZBdpalJKAx9K7dWguGI9lCp0PJ1a4NMY=";
     };
@@ -50,7 +50,7 @@ let
     version = "0.6.1";
     format = "wheel";
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/py3/p/pyasn1/pyasn1-0.6.1-py3-none-any.whl";
+      url = "https://files.pythonhosted.org/packages/c8/f1/d6a797abb14f6283c0ddff96bbdd46937f64122b8c925cab503dd37f8214/pyasn1-0.6.1-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
       hash = "sha256-DWMvRvK6CRQ9o6iv6eM/tvkvojIKt+iG4tD3Zyr4Rik=";
     };
@@ -65,7 +65,7 @@ let
     version = "0.4.2";
     format = "wheel";
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/py3/p/pyasn1_modules/pyasn1_modules-0.4.2-py3-none-any.whl";
+      url = "https://files.pythonhosted.org/packages/47/8d/d529b5d697919ba8c11ad626e835d4039be708a35b0d22de83a269a6682c/pyasn1_modules-0.4.2-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
       hash = "sha256-KSU6kgfOMrZMOsZgDtx1No+YRzkG6P0QQ71rWx3iwUo=";
     };
@@ -81,7 +81,7 @@ let
     version = "5.5.2";
     format = "wheel";
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/py3/c/cachetools/cachetools-5.5.2-py3-none-any.whl";
+      url = "https://files.pythonhosted.org/packages/72/76/20fa66124dbe6be5cafeb312ece67de6b61dd91a0247d1ea13db4ebb33c2/cachetools-5.5.2-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
       hash = "sha256-0moivMYuuVw76r2fHuXoINPScE/ilny+NQ4gyP/NPwo=";
     };
@@ -97,7 +97,7 @@ let
     version = "2.40.3";
     format = "wheel";
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/py3/g/google_auth/google_auth-2.40.3-py3-none-any.whl";
+      url = "https://files.pythonhosted.org/packages/17/63/b19553b658a1692443c62bd07e5868adaa0ad746a0751ba62c59568cd45b/google_auth-2.40.3-py2.py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
       hash = "sha256-E3DUWT6GITVjVH+XqSdS/GWEVv5FFMgJVE8zD+1Fp8o=";
     };
@@ -119,7 +119,7 @@ let
     version = "1.20.0";
     format = "wheel";
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/py3/g/google_genai/google_genai-1.20.0-py3-none-any.whl";
+      url = "https://files.pythonhosted.org/packages/b9/b4/08f3ea414060a7e7d4436c08bb22d03dabef74cc05ef13ef8cd846156d5b/google_genai-1.20.0-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
       hash = "sha256-zNYdbryxT1x3i4F7gBDjlVrk9t3+qr9l9C9tXj5agSU=";
     };
@@ -157,7 +157,7 @@ let
     version = "1.32.1";
     format = "wheel";
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/py3/o/opentelemetry_sdk/opentelemetry_sdk-1.32.1-py3-none-any.whl";
+      url = "https://files.pythonhosted.org/packages/dc/00/d3976cdcb98027aaf16f1e980e54935eb820872792f0eaedd4fd7abb5964/opentelemetry_sdk-1.32.1-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
       hash = "sha256-u6N7cKCAOGEyR7xCvu5agbDdykIsfX8bCXsyvxx+Lxc=";
     };
@@ -176,7 +176,7 @@ let
     version = "5.3.1";
     format = "wheel";
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/py3/t/tzlocal/tzlocal-5.3.1-py3-none-any.whl";
+      url = "https://files.pythonhosted.org/packages/c2/14/e2a54fabd4f08cd7af1c07030603c3356b74da07f7cc056e600436edfa17/tzlocal-5.3.1-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
       hash = "sha256-6xpmw+9YR633qDTxvggAWBtoO1YI50+G7LzvirkbuF0=";
     };
@@ -196,7 +196,7 @@ let
     version = "2.2.0";
     format = "wheel";
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/py3/g/google_adk/google_adk-2.2.0-py3-none-any.whl";
+      url = "https://files.pythonhosted.org/packages/64/f5/44a3b20b17bac130497f2d1dde8b93c90cfc026983cd94f24488d540ea70/google_adk-2.2.0-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
       hash = "sha256-6989kx3CucWzDZlTWPwq6Z1ZWUxIpKr3SWhpzNLF8kU=";
     };
@@ -233,7 +233,7 @@ let
     version = "2.0.26";
     format = "wheel";
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/py3/l/langgraph_checkpoint/langgraph_checkpoint-2.0.26-py3-none-any.whl";
+      url = "https://files.pythonhosted.org/packages/38/48/d7cec540a3011b3207470bb07294a399e3b94b2e8a602e38cb007ce5bc10/langgraph_checkpoint-2.0.26-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
       hash = "sha256-rUkHhY7TIKII4UrAN+S5JE7By1qlRXBRgWauiyV1LOw=";
     };
@@ -249,7 +249,7 @@ let
     version = "0.3.65";
     format = "wheel";
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/py3/l/langchain_core/langchain_core-0.3.65-py3-none-any.whl";
+      url = "https://files.pythonhosted.org/packages/54/f0/31db18b7b8213266aed926ce89b5bdd84ccde7ee2edf4cab14e3dd2bfcf1/langchain_core-0.3.65-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
       hash = "sha256-gOj69unzMfjvco8/55NUnx0/skT8+eG9zsq2pvRmk5Q=";
     };
@@ -272,7 +272,7 @@ let
     version = "1.2.5";
     format = "wheel";
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/py3/l/langgraph/langgraph-1.2.5-py3-none-any.whl";
+      url = "https://files.pythonhosted.org/packages/a2/03/187281cf61845c5a9c397ae6cd9cd73bb54b39435e5575a7b83c853e5b76/langgraph-1.2.5-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
       hash = "sha256-koa7Xe+C/IZZWcFDeP5HNRjcCX1YYiX2IvApY3oqS7k=";
     };
@@ -294,8 +294,7 @@ let
     version = "1.73.0";
     format = "wheel";
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/cp312/g/grpcio/grpcio-1.73.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl";
-      # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
+      url = "https://files.pythonhosted.org/packages/b0/e6/13cfea15e3b8f79c4ae7b676cb21fab70978b0fde1e1d28bb0e073291290/grpcio-1.73.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl";
       hash = "sha256-5TAH9w2Xg/U7QbTPOO05qONIARQ35MKH7ufdHTnVSy8=";
     };
     doCheck = false;
@@ -313,7 +312,7 @@ let
     version = "4.21.3";
     format = "wheel";
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/py3/w/weaviate_client/weaviate_client-4.21.3-py3-none-any.whl";
+      url = "https://files.pythonhosted.org/packages/69/d6/ec1267a2a90fcbe1bb4b75cd6b946039ff8f282cac98d11d03ec08fc4732/weaviate_client-4.21.3-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
       hash = "sha256-O+m+Jh4ByeZNhNDe7hqU6G+iXEG9yM3vUJkj/KMN7VM=";
     };
