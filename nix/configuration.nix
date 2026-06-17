@@ -221,6 +221,7 @@ let
       aiosqlite
       watchdog
       distro
+      fastapi
     ];
     doCheck = false;
   };
@@ -308,6 +309,7 @@ let
       httpx
       pydantic
       grpcio
+      validators
     ];
     doCheck = false;
   };
