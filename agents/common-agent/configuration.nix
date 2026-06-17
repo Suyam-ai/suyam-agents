@@ -53,6 +53,17 @@ let
   # nixpkgs pydantic which also pulls in typing-inspection 0.4.2.
   typing-inspection = py.pkgs.typing-inspection;
 
+  logfire-api = py.pkgs.buildPythonPackage rec {
+    pname = "logfire_api";
+    version = "4.37.0";
+    format = "wheel";
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/10/2f/23e5b8fa22f75f73965c72e5c29e6fb8715263457394601e254fe26fbe31/logfire_api-4.37.0-py3-none-any.whl";
+      hash = "sha256-HXVvi6I6pW1DjguiwPUpoA/KyXW4eFxWGwWCZ/lGUIg=";
+    };
+    doCheck = false;
+  };
+
   pydantic-ai-slim = py.pkgs.buildPythonPackage rec {
     pname = "pydantic_ai_slim";
     version = "1.107.0";
@@ -69,6 +80,7 @@ let
       genai-prices
       griffelib
       typing-inspection
+      logfire-api
     ];
     doCheck = false;
   };
