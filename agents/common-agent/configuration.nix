@@ -49,17 +49,9 @@ let
     doCheck = false;
   };
 
-  typing-inspection = py.pkgs.buildPythonPackage rec {
-    pname = "typing_inspection";
-    version = "0.4.0";
-    format = "wheel";
-    src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/py3/t/typing_inspection/typing_inspection-0.4.0-py3-none-any.whl";
-      hash = "sha256-UOclWfzSpjZ6Gfen5hDmr8ufrJQMZQKQ7tiT1hOGgy8=";
-    };
-    propagatedBuildInputs = with py.pkgs; [ typing-extensions ];
-    doCheck = false;
-  };
+  # Use nixpkgs typing-inspection (0.4.2) to avoid version conflict with
+  # nixpkgs pydantic which also pulls in typing-inspection 0.4.2.
+  typing-inspection = py.pkgs.typing-inspection;
 
   pydantic-ai-slim = py.pkgs.buildPythonPackage rec {
     pname = "pydantic_ai_slim";
