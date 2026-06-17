@@ -62,8 +62,8 @@ class AISummarizeHandler:
     CLI usage outside container context.
     """
 
-    STEP_TYPE = "ai"
-    DISPLAY_NAME = "AI Step"
+    STEP_TYPE = "ai.summarize"
+    DISPLAY_NAME = "AI Summarize Step"
     DESCRIPTION = "Runs a Claude/AI model call on provided input"
     AGENT_TYPE = "ai"
     VERSION = "1.0.0"
