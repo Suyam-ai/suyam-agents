@@ -112,16 +112,15 @@ let
 
   # ---------------------------------------------------------------------------
   # google-genai — required by google-adk (pure-Python)
-  # Pinned to the version shipped with google-adk 2.2.0.
+  # google-adk 2.2.0 requires google-genai>=2.4,<3; upgraded from 1.20.0.
   # ---------------------------------------------------------------------------
   google-genai = py.pkgs.buildPythonPackage rec {
     pname = "google_genai";
-    version = "1.20.0";
+    version = "2.8.0";
     format = "wheel";
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/b9/b4/08f3ea414060a7e7d4436c08bb22d03dabef74cc05ef13ef8cd846156d5b/google_genai-1.20.0-py3-none-any.whl";
-      # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
-      hash = "sha256-zNYdbryxT1x3i4F7gBDjlVrk9t3+qr9l9C9tXj5agSU=";
+      url = "https://files.pythonhosted.org/packages/e2/de/747ad1aa49e902da9a4699081c282a1ed8ceed3b4d295fd99a6d286e09e4/google_genai-2.8.0-py3-none-any.whl";
+      hash = "sha256-TaCiI6EA9LN/YJpouDXjMmqw+jEzFNwP2dNOdu4pOEQ=";
     };
     propagatedBuildInputs = with py.pkgs; [
       google-auth
