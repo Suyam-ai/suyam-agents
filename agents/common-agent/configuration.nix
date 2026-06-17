@@ -35,6 +35,7 @@ let
       url = "https://files.pythonhosted.org/packages/py3/g/genai_prices/genai_prices-0.0.62-py3-none-any.whl";
       hash = "sha256-XZqw2eXYHgNfiL9ZH7ao3eUnkieGrPHuJzc1j3u+AWc=";
     };
+    propagatedBuildInputs = [ httpx2 ];
     doCheck = false;
   };
 
@@ -53,6 +54,29 @@ let
   # nixpkgs pydantic which also pulls in typing-inspection 0.4.2.
   typing-inspection = py.pkgs.typing-inspection;
 
+  httpx2 = py.pkgs.buildPythonPackage rec {
+    pname = "httpx2";
+    version = "2.4.0";
+    format = "wheel";
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/29/45/82bc57c3d9c3314f663b67cc057f1c017a6450685dde513f4f8db5cf431f/httpx2-2.4.0-py3-none-any.whl";
+      hash = "sha256-QlrNmSl4KVmd7PZwE4bdhNs1Qll9NtPi5N75MOzVf9k=";
+    };
+    propagatedBuildInputs = with py.pkgs; [ httpx ];
+    doCheck = false;
+  };
+
+  logfire-api = py.pkgs.buildPythonPackage rec {
+    pname = "logfire_api";
+    version = "4.37.0";
+    format = "wheel";
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/10/2f/23e5b8fa22f75f73965c72e5c29e6fb8715263457394601e254fe26fbe31/logfire_api-4.37.0-py3-none-any.whl";
+      hash = "sha256-HXVvi6I6pW1DjguiwPUpoA/KyXW4eFxWGwWCZ/lGUIg=";
+    };
+    doCheck = false;
+  };
+
   pydantic-ai-slim = py.pkgs.buildPythonPackage rec {
     pname = "pydantic_ai_slim";
     version = "1.107.0";
@@ -69,12 +93,14 @@ let
       genai-prices
       griffelib
       typing-inspection
+      logfire-api
     ];
     doCheck = false;
   };
 
-  # pydantic-ai 1.107.0 is a meta-package; the actual module comes from pydantic-ai-slim above.
-  # Install pydantic-ai-slim in the Python environment (the module name is still pydantic_ai).
+  # pydantic-ai 1.107.0 is a meta-package; actual module is in pydantic-ai-slim.
+  # propagatedBuildInputs is empty here to avoid binary conflict (.pai-wrapped)
+  # when both pydantic-ai and pydantic-ai-slim land in the same buildEnv.
   pydantic-ai = py.pkgs.buildPythonPackage rec {
     pname = "pydantic_ai";
     version = "1.107.0";
@@ -83,7 +109,7 @@ let
       url = "https://files.pythonhosted.org/packages/py3/p/pydantic_ai/pydantic_ai-1.107.0-py3-none-any.whl";
       hash = "sha256-4DGIC0StfOODay9qqM4qC9czzbC4mjStumR+lt3Lp4g=";
     };
-    propagatedBuildInputs = [ pydantic-ai-slim ];
+    propagatedBuildInputs = [];
     doCheck = false;
   };
 
@@ -143,7 +169,7 @@ let
     anyio
     typing-extensions
     distro
-    pydantic-ai
+    pydantic-ai-slim
     groq-sdk
     jiter
     anthropic-sdk
