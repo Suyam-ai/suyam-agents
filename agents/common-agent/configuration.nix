@@ -35,6 +35,7 @@ let
       url = "https://files.pythonhosted.org/packages/py3/g/genai_prices/genai_prices-0.0.62-py3-none-any.whl";
       hash = "sha256-XZqw2eXYHgNfiL9ZH7ao3eUnkieGrPHuJzc1j3u+AWc=";
     };
+    propagatedBuildInputs = [ httpx2 ];
     doCheck = false;
   };
 
@@ -52,6 +53,18 @@ let
   # Use nixpkgs typing-inspection (0.4.2) to avoid version conflict with
   # nixpkgs pydantic which also pulls in typing-inspection 0.4.2.
   typing-inspection = py.pkgs.typing-inspection;
+
+  httpx2 = py.pkgs.buildPythonPackage rec {
+    pname = "httpx2";
+    version = "2.4.0";
+    format = "wheel";
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/29/45/82bc57c3d9c3314f663b67cc057f1c017a6450685dde513f4f8db5cf431f/httpx2-2.4.0-py3-none-any.whl";
+      hash = "sha256-QlrNmSl4KVmd7PZwE4bdhNs1Qll9NtPi5N75MOzVf9k=";
+    };
+    propagatedBuildInputs = with py.pkgs; [ httpx ];
+    doCheck = false;
+  };
 
   logfire-api = py.pkgs.buildPythonPackage rec {
     pname = "logfire_api";
