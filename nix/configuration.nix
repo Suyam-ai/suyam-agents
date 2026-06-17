@@ -148,6 +148,22 @@ let
   };
 
   # ---------------------------------------------------------------------------
+  # opentelemetry-semantic-conventions — nixpkgs 0.55b0 lacks GEN_AI_INPUT_MESSAGES
+  # google-adk 2.2.0 needs 0.56b0+; use 0.63b1 (latest stable).
+  # ---------------------------------------------------------------------------
+  opentelemetry-semantic-conventions = py.pkgs.buildPythonPackage rec {
+    pname = "opentelemetry_semantic_conventions";
+    version = "0.63b1";
+    format = "wheel";
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/cb/7a/7fe66f5f3682b1dd47d88cc4e11f1c6c0966b737de2d16671146e23c39a5/opentelemetry_semantic_conventions-0.63b1-py3-none-any.whl";
+      hash = "sha256-3+XvTe6CWGt0b1IrgYzrKY0As9WfZgBCvXlAS/+NBoI=";
+    };
+    propagatedBuildInputs = with py.pkgs; [ opentelemetry-api deprecated ];
+    doCheck = false;
+  };
+
+  # ---------------------------------------------------------------------------
   # opentelemetry-sdk — required by google-adk (pure-Python)
   # Provides opentelemetry.sdk.* instrumentation used by ADK tracing.
   # ---------------------------------------------------------------------------
