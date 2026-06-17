@@ -222,6 +222,7 @@ let
       watchdog
       distro
       fastapi
+      opentelemetry-semantic-conventions
     ];
     doCheck = false;
   };
@@ -310,6 +311,7 @@ let
       pydantic
       grpcio
       validators
+      packaging
     ];
     doCheck = false;
   };
