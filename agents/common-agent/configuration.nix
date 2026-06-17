@@ -73,8 +73,9 @@ let
     doCheck = false;
   };
 
-  # pydantic-ai 1.107.0 is a meta-package; the actual module comes from pydantic-ai-slim above.
-  # Install pydantic-ai-slim in the Python environment (the module name is still pydantic_ai).
+  # pydantic-ai 1.107.0 is a meta-package; actual module is in pydantic-ai-slim.
+  # propagatedBuildInputs is empty here to avoid binary conflict (.pai-wrapped)
+  # when both pydantic-ai and pydantic-ai-slim land in the same buildEnv.
   pydantic-ai = py.pkgs.buildPythonPackage rec {
     pname = "pydantic_ai";
     version = "1.107.0";
@@ -83,7 +84,7 @@ let
       url = "https://files.pythonhosted.org/packages/py3/p/pydantic_ai/pydantic_ai-1.107.0-py3-none-any.whl";
       hash = "sha256-4DGIC0StfOODay9qqM4qC9czzbC4mjStumR+lt3Lp4g=";
     };
-    propagatedBuildInputs = [ pydantic-ai-slim ];
+    propagatedBuildInputs = [];
     doCheck = false;
   };
 
@@ -143,6 +144,7 @@ let
     anyio
     typing-extensions
     distro
+    pydantic-ai-slim
     pydantic-ai
     groq-sdk
     jiter
