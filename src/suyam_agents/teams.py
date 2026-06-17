@@ -32,6 +32,8 @@ class TeamsStepHandler:
     STEP_TYPE = "teams"
     DISPLAY_NAME = "Microsoft Teams"
     DESCRIPTION = "Polls a Microsoft Teams channel for messages"
+    AGENT_TYPE = "teams"
+    VERSION = "1.0.0"
     PARAMS_SCHEMA = {"type": "object", "properties": {"channel_id": {"type": "string"}, "limit": {"type": "integer"}}, "required": ["channel_id"]}
 
     def run(self, step: object, context: dict) -> str:

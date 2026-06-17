@@ -65,6 +65,8 @@ class AISummarizeHandler:
     STEP_TYPE = "ai"
     DISPLAY_NAME = "AI Step"
     DESCRIPTION = "Runs a Claude/AI model call on provided input"
+    AGENT_TYPE = "ai"
+    VERSION = "1.0.0"
     PARAMS_SCHEMA = {"type": "object", "properties": {"model": {"type": "string"}, "prompt": {"type": "string"}}, "required": ["prompt"]}
 
     def run(self, step: object, context: dict) -> str:

@@ -55,6 +55,8 @@ class HttpRequestHandler:
     STEP_TYPE = "http"
     DISPLAY_NAME = "HTTP Request"
     DESCRIPTION = "Makes an HTTP request to a URL"
+    AGENT_TYPE = "http"
+    VERSION = "1.0.0"
     PARAMS_SCHEMA = {"type": "object", "properties": {"url": {"type": "string"}, "method": {"type": "string", "enum": ["GET", "POST", "PUT", "DELETE", "PATCH"]}, "body": {"type": "object"}}, "required": ["url"]}
 
     def run(self, step: object, context: dict) -> str:

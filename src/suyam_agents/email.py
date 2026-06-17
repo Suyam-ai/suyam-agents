@@ -74,6 +74,8 @@ class EmailSMTPHandler:
     STEP_TYPE = "email_smtp"
     DISPLAY_NAME = "Email (SMTP)"
     DESCRIPTION = "Sends an email via SMTP"
+    AGENT_TYPE = "email"
+    VERSION = "1.0.0"
     PARAMS_SCHEMA = {"type": "object", "properties": {"to": {"type": "string"}, "subject": {"type": "string"}, "body": {"type": "string"}}, "required": ["to", "subject", "body"]}
 
     def run(self, step: object, context: dict) -> str:
@@ -183,6 +185,8 @@ class EmailM365Handler:
     STEP_TYPE = "email_m365"
     DISPLAY_NAME = "Email (M365)"
     DESCRIPTION = "Sends an email via Microsoft 365 Graph API"
+    AGENT_TYPE = "email"
+    VERSION = "1.0.0"
     PARAMS_SCHEMA = {"type": "object", "properties": {"to": {"type": "string"}, "subject": {"type": "string"}, "body": {"type": "string"}}, "required": ["to", "subject", "body"]}
 
     def run(self, step: object, context: dict) -> str:
