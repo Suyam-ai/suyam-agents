@@ -36,7 +36,7 @@ let
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/cp311/c/cryptography/cryptography-49.0.0-cp311-abi3-manylinux_2_28_x86_64.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
-      hash = "sha256-PLACEHOLDER_cryptography_49_manylinux=";
+      hash = "sha256-Kv6QUdp6571ZBdpalJKAx9K7dWguGI9lCp0PJ1a4NMY=";
     };
     propagatedBuildInputs = with py.pkgs; [ cffi ];
     doCheck = false;
@@ -52,7 +52,7 @@ let
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/py3/p/pyasn1/pyasn1-0.6.1-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
-      hash = "sha256-PLACEHOLDER_pyasn1=";
+      hash = "sha256-DWMvRvK6CRQ9o6iv6eM/tvkvojIKt+iG4tD3Zyr4Rik=";
     };
     doCheck = false;
   };
@@ -67,7 +67,7 @@ let
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/py3/p/pyasn1_modules/pyasn1_modules-0.4.2-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
-      hash = "sha256-PLACEHOLDER_pyasn1_modules=";
+      hash = "sha256-KSU6kgfOMrZMOsZgDtx1No+YRzkG6P0QQ71rWx3iwUo=";
     };
     propagatedBuildInputs = [ pyasn1 ];
     doCheck = false;
@@ -83,7 +83,7 @@ let
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/py3/c/cachetools/cachetools-5.5.2-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
-      hash = "sha256-PLACEHOLDER_cachetools=";
+      hash = "sha256-0moivMYuuVw76r2fHuXoINPScE/ilny+NQ4gyP/NPwo=";
     };
     doCheck = false;
   };
@@ -99,7 +99,7 @@ let
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/py3/g/google_auth/google_auth-2.40.3-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
-      hash = "sha256-PLACEHOLDER_google_auth=";
+      hash = "sha256-E3DUWT6GITVjVH+XqSdS/GWEVv5FFMgJVE8zD+1Fp8o=";
     };
     propagatedBuildInputs = with py.pkgs; [
       cachetools
@@ -121,7 +121,7 @@ let
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/py3/g/google_genai/google_genai-1.20.0-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
-      hash = "sha256-PLACEHOLDER_google_genai=";
+      hash = "sha256-zNYdbryxT1x3i4F7gBDjlVrk9t3+qr9l9C9tXj5agSU=";
     };
     propagatedBuildInputs = with py.pkgs; [
       google-auth
@@ -143,7 +143,7 @@ let
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/py3/A/Authlib/Authlib-1.6.0-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
-      hash = "sha256-PLACEHOLDER_authlib=";
+      hash = "sha256-kWhViUmPeehlXoqJR0Ma1iiIMdZD8RxVwhQ//Mc4BI0=";
     };
     propagatedBuildInputs = with py.pkgs; [ cryptography ];
     doCheck = false;
@@ -160,7 +160,7 @@ let
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/py3/o/opentelemetry_sdk/opentelemetry_sdk-1.32.1-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
-      hash = "sha256-PLACEHOLDER_opentelemetry_sdk=";
+      hash = "sha256-u6N7cKCAOGEyR7xCvu5agbDdykIsfX8bCXsyvxx+Lxc=";
     };
     propagatedBuildInputs = with py.pkgs; [
       opentelemetry-api
@@ -179,7 +179,7 @@ let
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/py3/t/tzlocal/tzlocal-5.3.1-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
-      hash = "sha256-PLACEHOLDER_tzlocal=";
+      hash = "sha256-6xpmw+9YR633qDTxvggAWBtoO1YI50+G7LzvirkbuF0=";
     };
     doCheck = false;
   };
@@ -199,7 +199,7 @@ let
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/py3/g/google_adk/google_adk-2.2.0-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
-      hash = "sha256-PLACEHOLDER_google_adk=";
+      hash = "sha256-6989kx3CucWzDZlTWPwq6Z1ZWUxIpKr3SWhpzNLF8kU=";
     };
     propagatedBuildInputs = with py.pkgs; [
       google-genai
@@ -236,7 +236,7 @@ let
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/py3/l/langgraph_checkpoint/langgraph_checkpoint-2.0.26-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
-      hash = "sha256-PLACEHOLDER_langgraph_checkpoint=";
+      hash = "sha256-rUkHhY7TIKII4UrAN+S5JE7By1qlRXBRgWauiyV1LOw=";
     };
     propagatedBuildInputs = with py.pkgs; [ pydantic ];
     doCheck = false;
@@ -252,7 +252,7 @@ let
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/py3/l/langchain_core/langchain_core-0.3.65-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
-      hash = "sha256-PLACEHOLDER_langchain_core=";
+      hash = "sha256-gOj69unzMfjvco8/55NUnx0/skT8+eG9zsq2pvRmk5Q=";
     };
     propagatedBuildInputs = with py.pkgs; [
       pydantic
@@ -275,7 +275,7 @@ let
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/py3/l/langgraph/langgraph-1.2.5-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
-      hash = "sha256-PLACEHOLDER_langgraph=";
+      hash = "sha256-koa7Xe+C/IZZWcFDeP5HNRjcCX1YYiX2IvApY3oqS7k=";
     };
     propagatedBuildInputs = with py.pkgs; [
       pydantic
@@ -297,7 +297,7 @@ let
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/cp312/g/grpcio/grpcio-1.73.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
-      hash = "sha256-PLACEHOLDER_grpcio_manylinux=";
+      hash = "sha256-5TAH9w2Xg/U7QbTPOO05qONIARQ35MKH7ufdHTnVSy8=";
     };
     doCheck = false;
   };
@@ -316,7 +316,7 @@ let
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/py3/w/weaviate_client/weaviate_client-4.21.3-py3-none-any.whl";
       # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
-      hash = "sha256-PLACEHOLDER_weaviate_client=";
+      hash = "sha256-O+m+Jh4ByeZNhNDe7hqU6G+iXEG9yM3vUJkj/KMN7VM=";
     };
     propagatedBuildInputs = with py.pkgs; [
       httpx
