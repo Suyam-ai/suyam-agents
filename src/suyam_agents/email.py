@@ -306,7 +306,7 @@ class EmailM365Handler:
 
             if loop is not None and loop.is_running():
                 with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
-                    pool.submit(asyncio.run, _send()).result()
+                    pool.submit(lambda: asyncio.run(_send())).result()
             else:
                 asyncio.run(_send())
         except FatalError:
