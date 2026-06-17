@@ -141,8 +141,7 @@ let
     version = "1.6.0";
     format = "wheel";
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/py3/A/Authlib/Authlib-1.6.0-py3-none-any.whl";
-      # nix-prefetch: run nix build --impure 2>&1 | grep "got:"
+      url = "https://files.pythonhosted.org/packages/84/29/587c189bbab1ccc8c86a03a5d0e13873df916380ef1be461ebe6acebf48d/authlib-1.6.0-py2.py3-none-any.whl";
       hash = "sha256-kWhViUmPeehlXoqJR0Ma1iiIMdZD8RxVwhQ//Mc4BI0=";
     };
     propagatedBuildInputs = with py.pkgs; [ cryptography ];
