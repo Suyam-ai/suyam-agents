@@ -220,6 +220,7 @@ let
       tzlocal
       aiosqlite
       watchdog
+      distro
     ];
     doCheck = false;
   };
@@ -283,21 +284,9 @@ let
     doCheck = false;
   };
 
-  # ---------------------------------------------------------------------------
-  # grpcio 1.73.0 — native extension (C-based), manylinux x86_64
-  # Required by weaviate-client for gRPC transport.
-  # Follows the jiter pattern from common-agent/configuration.nix.
-  # ---------------------------------------------------------------------------
-  grpcio = py.pkgs.buildPythonPackage rec {
-    pname = "grpcio";
-    version = "1.73.0";
-    format = "wheel";
-    src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/b0/e6/13cfea15e3b8f79c4ae7b676cb21fab70978b0fde1e1d28bb0e073291290/grpcio-1.73.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl";
-      hash = "sha256-5TAH9w2Xg/U7QbTPOO05qONIARQ35MKH7ufdHTnVSy8=";
-    };
-    doCheck = false;
-  };
+  # grpcio — use nixpkgs build (1.76.0); manylinux wheels fail on NixOS due to
+  # missing ld paths. nixpkgs grpcio is compiled natively against NixOS glibc.
+  grpcio = py.pkgs.grpcio;
 
   # ---------------------------------------------------------------------------
   # weaviate-client 4.21.3 — Weaviate Python client (pure-Python wheel)
